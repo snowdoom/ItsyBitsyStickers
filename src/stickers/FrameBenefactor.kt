@@ -74,7 +74,7 @@ fun captureActivity(stage: Stage, scene: Scene) {
         e.printStackTrace()
     }
     getVisible(stage)
-    replaceImTex(stage, scene, filHead, stage.title, n, filTail)
+    replaceImTex(stage, scene, filHead, stage.title, n - 1, filTail)
 }
 
 fun goTransparent(stage: Stage){
