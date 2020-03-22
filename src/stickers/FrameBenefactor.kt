@@ -53,6 +53,7 @@ fun captureActivity(stage: Stage, scene: Scene) {
     Thread.sleep(1_000)
     var image:RenderedImage = Robot().createScreenCapture(Rectangle(frameXPos!!, frameYPos!!, frameWid!!, frameHi!! - 40))
     try {
+        n = 1;
         while (File(filHead + "captured_" + stage.title + "_" + n + filTail).exists()) {
             n++
         }
@@ -204,11 +205,12 @@ fun activity(stage: Stage, scene: Scene, caller: Any, x: Int){
 //                    copy(source, destination, StandardCopyOption.REPLACE_EXISTING)
 //                }
 //            }
-            var bImg: BufferedImage = ImageIO.read(File(filHead + "captured_" + stage.title + "_" + x + filTail))
-            var imgWid: Int = bImg.width
-            var imgHi: Int = bImg.height
+            n = 1;
+            while (File(filHead + "captured_" + stage.title + "_" + n + filTail).exists()) {
+                n++
+            }
             val source = File(filHead + "utili/tpdot_00.png").toPath()
-            val destination = File(filHead + "captured_" + stage.title + "_" + (x + 1) + filTail).toPath()
+            val destination = File(filHead + "captured_" + stage.title + "_" + n + filTail).toPath()
             copy(source, destination, StandardCopyOption.REPLACE_EXISTING)
             stage.close()
             moreStage.close()
