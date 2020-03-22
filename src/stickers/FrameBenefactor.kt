@@ -204,14 +204,12 @@ fun activity(stage: Stage, scene: Scene, caller: Any, x: Int){
 //                    copy(source, destination, StandardCopyOption.REPLACE_EXISTING)
 //                }
 //            }
-            if (File(filHead + "captured_" + stage.title + "_" + x + filTail).exists()) {
-                var bImg: BufferedImage = ImageIO.read(File(filHead + "captured_" + stage.title + "_" + x + filTail))
-                var imgWid: Int = bImg.width
-                var imgHi: Int = bImg.height
-                val source = File(filHead + "utili/tpdot_00.png").toPath()
-                val destination = File(filHead + "captured_" + stage.title + "_" + (x + 1) + filTail).toPath()
-                copy(source, destination, StandardCopyOption.REPLACE_EXISTING)
-            }
+            var bImg: BufferedImage = ImageIO.read(File(filHead + "captured_" + stage.title + "_" + x + filTail))
+            var imgWid: Int = bImg.width
+            var imgHi: Int = bImg.height
+            val source = File(filHead + "utili/tpdot_00.png").toPath()
+            val destination = File(filHead + "captured_" + stage.title + "_" + (x + 1) + filTail).toPath()
+            copy(source, destination, StandardCopyOption.REPLACE_EXISTING)
             stage.close()
             moreStage.close()
         }
