@@ -302,6 +302,7 @@ class FrameBenefactor : Application() {
         primaryStage.minWidth = 110.0
         primaryStage.minHeight = 90.0
         primaryStage.restore(this, "theStage")
+        m = 1;
         while (File(filHead + "captured_" + primaryStage.title + "_" + m + filTail).exists()) {
             m++
         }
