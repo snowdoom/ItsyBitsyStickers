@@ -64,17 +64,21 @@ fun captureActivity(stage: Stage, scene: Scene) {
                 File(filHead + "captured_" + stage.title + "_" + (n - 1) + filTail).delete()
                 ImageIO.write(image, "png", File(filHead + "captured_" + stage.title + "_" + (n - 1) + filTail))
             }
-            if(imgWid > 4 && imgHi > 4) {
+            else {
                 ImageIO.write(image, "png", File(filHead + "captured_" + stage.title + "_" + n + filTail))
             }
         }else{
-            ImageIO.write(image, "png", File(filHead + "captured_" + stage.title + "_" + (n - 1) + filTail))
+            ImageIO.write(image, "png", File(filHead + "captured_" + stage.title + "_" + n + filTail))
         }
     } catch (e: IIOException) {
         e.printStackTrace()
     }
     getVisible(stage)
-    replaceImTex(stage, scene, filHead, stage.title, n - 1, filTail)
+    n = 1;
+    while (File(filHead + "captured_" + stage.title + "_" + n + filTail).exists()) {
+        n++
+    }
+    replaceImTex(stage, scene, filHead, stage.title, (n - 1), filTail)
 }
 
 fun goTransparent(stage: Stage){
@@ -190,26 +194,26 @@ fun activity(stage: Stage, scene: Scene, caller: Any, x: Int){
             } catch (e: IIOException) {
                 e.printStackTrace()
             }
-            if (File(filHead + "captured_" + stage.title + "_" + (x - 1) + filTail).exists()) {
-                var bImg: BufferedImage = ImageIO.read(File(filHead + "captured_" + stage.title + "_" + (x - 1) + filTail))
-                var imgWid: Int = bImg.width
-                var imgHi: Int = bImg.height
-                if(imgWid > 4 && imgHi > 4) {
-                    val source = File(filHead + "utili/tpdot_00.png").toPath()
-                    val destination = File(filHead + "captured_" + stage.title + "_" + x + filTail).toPath()
-                    copy(source, destination, StandardCopyOption.REPLACE_EXISTING)
-                }
-            }
-//            if (File(filHead + "captured_" + stage.title + "_" + x + filTail).exists()) {
-//                var bImg: BufferedImage = ImageIO.read(File(filHead + "captured_" + stage.title + "_" + x + filTail))
+//            if (File(filHead + "captured_" + stage.title + "_" + (x - 1) + filTail).exists()) {
+//                var bImg: BufferedImage = ImageIO.read(File(filHead + "captured_" + stage.title + "_" + (x - 1) + filTail))
 //                var imgWid: Int = bImg.width
 //                var imgHi: Int = bImg.height
 //                if(imgWid > 4 && imgHi > 4) {
 //                    val source = File(filHead + "utili/tpdot_00.png").toPath()
-//                    val destination = File(filHead + "captured_" + stage.title + "_" + (x + 1) + filTail).toPath()
+//                    val destination = File(filHead + "captured_" + stage.title + "_" + x + filTail).toPath()
 //                    copy(source, destination, StandardCopyOption.REPLACE_EXISTING)
 //                }
 //            }
+            if (File(filHead + "captured_" + stage.title + "_" + x + filTail).exists()) {
+                var bImg: BufferedImage = ImageIO.read(File(filHead + "captured_" + stage.title + "_" + x + filTail))
+                var imgWid: Int = bImg.width
+                var imgHi: Int = bImg.height
+                if(imgWid > 4 && imgHi > 4) {
+                    val source = File(filHead + "utili/tpdot_00.png").toPath()
+                    val destination = File(filHead + "captured_" + stage.title + "_" + (x + 1) + filTail).toPath()
+                    copy(source, destination, StandardCopyOption.REPLACE_EXISTING)
+                }
+            }
             stage.close()
             moreStage.close()
         }
