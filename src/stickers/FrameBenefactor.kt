@@ -128,8 +128,8 @@ fun activity(stage: Stage, scene: Scene, caller: Any, x: Int){
     fun reloader(event: MouseEvent) {
         frameXPos = event.sceneX.toInt()
         frameYPos = event.sceneY.toInt()
-        boxM.prefWidth = (stage.width - 10.0)
-        boxM.prefHeight = (stage.height - 10.0 - 50.0)
+        boxM.prefWidth = (stage.width - 20.0)
+        boxM.prefHeight = (stage.height - 20.0 - 50.0)
         txt.prefWidth = stage.width
         txt.layoutY = (stage.height - 50.0)
         try {
@@ -308,8 +308,8 @@ class FrameBenefactor : Application() {
         replaceImTex(primaryStage, scene, filHead, primaryStage.title, m - 1, filTail)
         var boxM: VBox = scene.lookup("#boxM") as VBox
         var txt: TextField = scene.lookup("#txt") as TextField
-        boxM.prefWidth = (primaryStage.width - 10.0)
-        boxM.prefHeight = (primaryStage.height - 10.0 - 50.0)
+        boxM.prefWidth = (primaryStage.width - 20.0)
+        boxM.prefHeight = (primaryStage.height - 20.0 - 50.0)
         txt.prefWidth = primaryStage.width
         txt.layoutY = (primaryStage.height - 50.0)
         var icon: Image = Image("file:///" + filHead + "utili/ItsyBitsyIcon_00.png")

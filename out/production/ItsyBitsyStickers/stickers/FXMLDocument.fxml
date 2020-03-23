@@ -10,6 +10,6 @@
         fx:controller="stickers.FrameBenefactor"
         prefWidth="300" prefHeight="180">
     <ImageView layoutX="0" layoutY="0" id="img" />
-    <VBox id="boxM" prefWidth="290" prefHeight="120" layoutX="5" layoutY="5" />
+    <VBox id="boxM" prefWidth="280" prefHeight="110" layoutX="10" layoutY="10" />
     <TextField id="txt" layoutX="0" layoutY="191" prefWidth="300" />
 </AnchorPane>
